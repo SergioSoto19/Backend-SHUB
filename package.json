@@ -1,0 +1,25 @@
+{
+  "name": "backend-shub",
+  "version": "1.0.0",
+  "description": "gestion de de reservas hotel",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "node",
+    "js"
+  ],
+  "author": "sergio soto",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.11.0",
+    "backend-shub": "file:",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "prisma": "^4.11.0"
+  }
+}
