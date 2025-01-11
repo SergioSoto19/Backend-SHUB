@@ -16,6 +16,7 @@
   "dependencies": {
     "@prisma/client": "^4.11.0",
     "backend-shub": "file:",
+    "bcrypt": "^5.1.1",
     "express": "^4.21.2"
   },
   "devDependencies": {
