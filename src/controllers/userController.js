@@ -8,7 +8,6 @@ const getUsers = async (req, res) => {
         const users = await prisma.user.findMany();
         res.json(users);
     } catch (error) {
-        console.error('Error al obtener los usuarios:', error);
         res.status(500).json({ message: 'Error al obtener los usuarios' });
     }
 };

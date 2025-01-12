@@ -15,24 +15,22 @@ const verifyToken = (req, res, next) => {
     token = token.split(" ")[1];
 
     try {
-        const { email, role } = jwt.verify(token, SECRET_KEY);
-        req.email = email;
-        req.role = role;
+        const { userId, email, role } = jwt.verify(token, SECRET_KEY);
+        req.user = { userId, email, role };
 
         next();
     } catch (error) {
         console.log(error);
-        return res.status(400).json({ error: "token incorrecto" });
+        return res.status(400).json({ error: "token invalido" });
     }
 };
 
-
- const verifyAdmin = (req, res, next) => {
-    if (req.role === 'admin') {
+const verifyAdmin = (req, res, next) => {
+    if (req.user.role === 'admin') {
         return next();
     }
 
     return res.status(403).json({ error: "Usuario no autorizado" });
 };
 
-export {verifyToken, verifyAdmin};
+export { verifyToken, verifyAdmin };

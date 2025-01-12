@@ -5,17 +5,18 @@ import { generateToken } from '../utils/authUtils.js';
 const prisma = new PrismaClient();
 
 const loginUser = async (req, res) => {
+    console.log("entro")
     const { email, password } = req.body;
 
     try {
         const user = await prisma.user.findFirst({ where: { email } });
 
         if (!user) {
-            return res.status(401).json({ message: 'correo incorrecto' });
+            return res.status(401).json({ message: 'Correo incorrecto' });
         }
-
+        
         const isPasswordValid = await bcrypt.compare(password, user.password);
-
+        
         if (!isPasswordValid) {
             return res.status(401).json({ message: 'Contraseña incorrecta' });
         }
