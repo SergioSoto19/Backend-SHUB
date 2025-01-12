@@ -5,7 +5,6 @@ import { generateToken } from '../utils/authUtils.js';
 const prisma = new PrismaClient();
 
 const loginUser = async (req, res) => {
-    console.log("entro")
     const { email, password } = req.body;
 
     try {
