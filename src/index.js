@@ -5,16 +5,7 @@ import routeLogin from './routers/routeLogin.js';
 import routerHotel from './routers/routeHotel.js';
 import routeReservations from './routers/routeReservations.js';
 
-
 const app = express()
-
-// const corsOptions = {
-//     origin: ['https://', 'https://'],
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     credentials: true,
-//     optionsSuccessStatus: 204
-// };
-// app.use(cors(corsOptions));
 app.use(cors());
 
 app.use(express.json());
