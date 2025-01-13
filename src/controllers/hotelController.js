@@ -57,8 +57,13 @@ const deleteHotel = async (req, res) => {
         });
         res.status(200).json({ message: 'Hotel eliminado éxitosamente' });
     } catch (error) {
-        res.status(500).json({ message: 'Error al eliminar el hotel' });
+        if (error.code === 'P2025') {
+            res.status(404).json({ message: 'Hotel no encontrado' });
+        } else if (error.code === 'P2003') {
+            res.status(403).json({ message: 'No tienes permiso para eliminar este hotel' });
+        } else {
+            res.status(500).json({ message: 'Error al eliminar el hotel' });
+        }
     }
 };
-
 export { getHotels, registerHotel, updateHotel, deleteHotel};
