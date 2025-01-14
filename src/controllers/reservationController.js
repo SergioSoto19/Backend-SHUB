@@ -30,6 +30,10 @@ const registerReservation = async (req, res) => {
         const formattedCheckInDate = new Date(check_in_date);
         const formattedCheckOutDate = new Date(check_out_date);
 
+        if (formattedCheckOutDate <= formattedCheckInDate) {
+            return res.status(400).json({ message: 'La fecha de salida no puede ser antes que la de llegada' });
+        }
+
         const newReservation = await prisma.reservation.create({
             data: { 
                 check_in_date: formattedCheckInDate, 
