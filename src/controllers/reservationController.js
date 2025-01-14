@@ -3,12 +3,8 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const getUserReservations = async (req, res) => {
-    const { userId } = req.user;
-
     try {
-        const reservations = await prisma.reservation.findMany({
-            where: { user_id: parseInt(userId) }
-        });
+        const reservations = await prisma.reservation.findMany();
         res.json(reservations);
     } catch (error) {
         console.error('Error al obtener las reservas:', error);
